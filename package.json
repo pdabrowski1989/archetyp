@@ -1,0 +1,24 @@
+{
+  "name": "archetyp",
+  "version": "1.0.0",
+  "description": "app init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pdabrowski1989/archetyp.git"
+  },
+  "author": "Dabrowski Pawel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pdabrowski1989/archetyp/issues"
+  },
+  "homepage": "https://github.com/pdabrowski1989/archetyp#readme",
+  "devDependencies": {
+    "ts-loader": "^2.3.3",
+    "typescript": "^2.4.2",
+    "webpack": "^3.5.5"
+  }
+}
