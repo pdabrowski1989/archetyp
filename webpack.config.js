@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     entry: './app/app.module.ts',
     module: {
@@ -14,6 +16,17 @@ module.exports = {
     },
     output: {
         filename: './dist/[name].js',
-        path: __dirname
+        path: path.join(__dirname)
+    },
+    watch: true,
+    watchOptions: {
+        ignored: /node_modules/,
+        aggregateTimeout: 300,
+        poll: 1000
+    },
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        port: 3000
     }
 };
