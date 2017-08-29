@@ -1,9 +1,13 @@
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var helpers = require('./helpers');
+const path = require('path');
+const webpack = require('webpack');
+
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: './app/app.module.ts',
+    entry: {
+        app: './app/app.module.ts'
+    },
     module: {
         rules: [
             {
@@ -17,7 +21,7 @@ module.exports = {
         extensions: [".tsx", ".ts", ".js"]
     },
     output: {
-        filename: './dist/[name].js',
+        filename: '../dist/[name].js',
         path: path.join(__dirname)
     },
     plugins: [
@@ -28,8 +32,20 @@ module.exports = {
                 comments: false
             }
         ),
-        new HtmlWebpackPlugin({
-            template: './index.html'
-        })
+        new BrowserSyncPlugin({
+            host: 'localhost',
+            port: 3000,
+            server: {baseDir: ['public']}
+        }),
+        new CopyWebpackPlugin([
+            {
+                from: {
+                    glob: './**/*.html',
+                    dot: true
+                },
+                ignore: /node_modules/,
+                to: '../dist'
+            }
+        ])
     ]
 };
